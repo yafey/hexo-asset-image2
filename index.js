@@ -20,7 +20,7 @@ function action(data) {
     // hexo g
     data.content = data.content.replace(regExp, "{% asset_img $2 $1 %}","g");
 
-    // log.info(`hexo-asset-img: filename: ${fileName}, title: ${data.title.trim()}`);
+    log.info(`hexo-asset-img: filename: ${fileName}, title: ${data.title.trim()}`);
     
     return data;
 }
