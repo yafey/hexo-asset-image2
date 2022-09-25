@@ -16,11 +16,13 @@ function action(data) {
     var fileName = reverseSource.substring(3, reverseSource.indexOf("/")).split("").reverse().join("");
 
     // ![example](postname/example.jpg)  -->  {% asset_img example.jpg example %}
-    var regExp = RegExp("!\\[(.*?)\\]\\(" + fileName + '/(.+?)\\)', "g");
+    // var regExp = RegExp("!\\[(.*?)\\]\\(" + fileName + '/(.+?)\\)', "g");
+	// ![example](/example.jpg)  -->  {% asset_img example.jpg example %}
+    var regExp = RegExp('!\\[(.*?)\\]\\(/(.+?)\\)', "g");
     // hexo g
     data.content = data.content.replace(regExp, "{% asset_img $2 $1 %}","g");
 
-    log.info(`hexo-asset-img: filename: ${fileName}, title: ${data.title.trim()}`);
+    log.info(`hexo-asset-img: filename: ${fileName}, title: ${data.title.trim()} , data.permalink:${data.permalink}`);
     
     return data;
 }
